@@ -3,6 +3,7 @@ import ParkingForm from "../../components/ParkingForm/ParkingForm";
 import ParkingLot from "../../components/ParkingLot/ParkingLot";
 import VehicleForm from "../../components/VehicleForm/VehicleForm";
 import { useUser } from "../../context/UserContext/UserContext";
+import style from "../../pages/DashboardPage/DashboardPage.module.css";
 
 function DashboardPage() {
   const { logout } = useUser();
@@ -11,10 +12,9 @@ function DashboardPage() {
     logout();
   };
   return (
+    <Grid>
     <Grid container direction="row" padding={1} spacing={2}>
-      <Grid
-        item
-        xs={12}
+      <Grid item xs={12}
         sx={{
           display: "flex",
           flexWrap: "wrap",
@@ -23,27 +23,38 @@ function DashboardPage() {
         }}
       >
         <Typography variant="h4" textAlign="center" component="div">
-          Inicio
+          Parqueadrero
         </Typography>
         <Button variant="text" onClick={handleCerrarSesion}>
           Cerrar Sesión
         </Button>
       </Grid>
-
-      <Grid item container justifyContent="center" alignItems="center" xs={12}>
-        <Grid item xs={6}>
-          <VehicleForm />
-        </Grid>
-
-        <Grid item xs={6}>
+    </Grid> 
+    <Grid section className={style.appwrapperCabeza} >
           <ParkingForm />
-        </Grid>
-      </Grid>
+    </Grid >
 
-      <Grid item xs={12}>
-        <ParkingLot />
+    <Grid div className={style.prueba}>
+      <Grid div >
+        <Grid section className={style.appwrapper} >
+          <VehicleForm />
+        </Grid >   
+      </Grid >
+      <Grid section className={style.appwrapper}>
+          <ParkingLot />
       </Grid>
     </Grid>
+  </Grid>
+   
+    
+  
+
+  
+  
+
+      
+   
+    
   );
 }
 

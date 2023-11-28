@@ -168,6 +168,7 @@ function VehicleForm() {
               value={brand}
               onChange={handleBrandChange}
             >
+              <MenuItem value="victory">Victory</MenuItem>
               <MenuItem value="honda">Honda</MenuItem>
               <MenuItem value="bmw">BMW</MenuItem>
               <MenuItem value="suzuki">suzuki</MenuItem>

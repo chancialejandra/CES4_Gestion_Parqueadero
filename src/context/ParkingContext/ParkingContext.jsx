@@ -25,7 +25,7 @@ export const ParkingProvider = ({ children }) => {
         .fill(null)
         .map((_, index) => ({
           type: "moto",
-          number: index + 11,
+          number: index + 6,
           occupied: false,
         }));
 

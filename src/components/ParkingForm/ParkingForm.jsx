@@ -39,7 +39,7 @@ function ParkingForm() {
   const parkingSpaces = getParkingSpaces();
 
   useEffect(() => {
-    const updatedSpacesList = initializeParkingSpaces(10, 10);
+    const updatedSpacesList = initializeParkingSpaces(5, 5);
     setParkingSpacesList(updatedSpacesList);
   }, [initializeParkingSpaces]);
 
@@ -82,7 +82,7 @@ function ParkingForm() {
       return;
     }
     // Lógica para registrar el ingreso al parqueadero
-    const spaceNumber = parseInt(selectedSpace, 10);
+    const spaceNumber = parseInt(selectedSpace, 5);
 
     // El vigilante ha ingresado un número de placa
     const vehicleInfo = getVehicleByLicensePlate(

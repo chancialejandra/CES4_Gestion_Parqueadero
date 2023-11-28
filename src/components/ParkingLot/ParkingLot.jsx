@@ -61,7 +61,7 @@ function ParkingLot() {
 
       <Grid item xs={4}>
         <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
-          <Table sx={{ minWidth: 350 }} aria-label="customized table">
+          <Table sx={{ minWidth: 50 }} aria-label="customized table">
             <TableHead>
               <StyledTableRow>
                 <StyledTableCell align="center" colSpan={2}>
@@ -93,7 +93,7 @@ function ParkingLot() {
       </Grid>
       <Grid item xs={8}>
         <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
-          <Table sx={{ minWidth: 600 }} aria-label="customized table">
+          <Table sx={{ minWidth: 500 }} aria-label="customized table">
             <TableHead>
               <StyledTableRow>
                 <StyledTableCell align="center" colSpan={5}>
