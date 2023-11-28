@@ -1,0 +1,20 @@
+:root {
+
+  --bg-color-scroll: #9797976c;
+
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-color-scroll);
+  border-radius: 10px;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
