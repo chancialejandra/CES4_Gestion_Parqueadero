@@ -1,22 +1,15 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react/prop-types */
-// UserContext.js
 import { createContext, useState, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // Puedes inicializarlo con un usuario por defecto si es necesario
+  const [user, setUser] = useState(null); 
 
-  const userQuemado = "aleja@gmail.com";
+  const userQuemado = "alejandra@gmail.com";
   const passwordQuemado = "aleja1234";
 
-  // Aquí podrías realizar operaciones de autenticación, si es necesario
-  useEffect(() => {
-    // Tu lógica de autenticación aquí (por ejemplo, verificar si el usuario está autenticado)
-  }, []);
+  useEffect(() => {}, []);
 
   const login = (username, password) => {
     if (userQuemado == username && passwordQuemado == password) {

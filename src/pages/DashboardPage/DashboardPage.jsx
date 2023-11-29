@@ -12,7 +12,7 @@ function DashboardPage() {
     logout();
   };
   return (
-    <Grid>
+  <Grid>
     <Grid container direction="row" padding={1} spacing={2}>
       <Grid item xs={12}
         sx={{
@@ -23,7 +23,7 @@ function DashboardPage() {
         }}
       >
         <Typography variant="h4" textAlign="center" component="div">
-          Parqueadrero
+          Parqueadero
         </Typography>
         <Button variant="text" onClick={handleCerrarSesion}>
           Cerrar Sesión
@@ -44,17 +44,7 @@ function DashboardPage() {
           <ParkingLot />
       </Grid>
     </Grid>
-  </Grid>
-   
-    
-  
-
-  
-  
-
-      
-   
-    
+  </Grid> 
   );
 }
 
