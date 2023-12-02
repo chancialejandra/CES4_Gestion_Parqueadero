@@ -38,8 +38,6 @@ function VehicleForm() {
   const handleLicensePlateChange = (event) => {
     const value = event.target.value;
     setLicensePlate(value);
-
-    // Verificar el tipo de vehículo seleccionado
   };
 
   const handleModelChange = (event) => {
@@ -65,7 +63,6 @@ function VehicleForm() {
     ) {
       toast.warning("Rellena todos los campos");
     } else if (vehicleType == "moto") {
-      // Para motos: 3 letras, 2 números y 1 letra
       const motoPlateRegex = /^[A-Z]{3}\d{2}[A-Z]$/;
 
       if (!motoPlateRegex.test(licensePlate.toUpperCase())) {
@@ -73,7 +70,6 @@ function VehicleForm() {
         return;
       }
     } else if (vehicleType == "car") {
-      // Para carros: 3 letras y 3 números
       const carPlateRegex = /^[A-Z]{3}\d{3}$/;
       if (!carPlateRegex.test(licensePlate.toUpperCase())) {
         toast.error("Número de placa de carro inválido (AAA123)");
@@ -90,8 +86,6 @@ function VehicleForm() {
       brand,
       cylinder: vehicleType === "moto" ? cylinder : undefined,
     });
-
-    // Limpiar los campos después de agregar el vehículo
     setVehicleType("car");
     setLicensePlate("");
     setName("");
@@ -168,6 +162,7 @@ function VehicleForm() {
               value={brand}
               onChange={handleBrandChange}
             >
+              <MenuItem value="victory">Victory</MenuItem>
               <MenuItem value="honda">Honda</MenuItem>
               <MenuItem value="bmw">BMW</MenuItem>
               <MenuItem value="suzuki">suzuki</MenuItem>
@@ -203,7 +198,7 @@ function VehicleForm() {
                 onChange={handleModelChange}
               >
                 <MenuItem value="2000">2000</MenuItem>
-                <MenuItem value="2001">2002</MenuItem>
+                <MenuItem value="2001">2001</MenuItem>
                 <MenuItem value="2002">2002</MenuItem>
                 <MenuItem value="2003">2003</MenuItem>
                 <MenuItem value="2004">2004</MenuItem>

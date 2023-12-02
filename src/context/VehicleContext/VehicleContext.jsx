@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react/prop-types */
-// VehicleContext.js
 import { createContext, useState, useContext } from "react";
 import { toast } from "react-toastify";
 
@@ -11,7 +7,6 @@ export const VehicleProvider = ({ children }) => {
   const [vehicles, setVehicles] = useState([]);
 
   const addVehicle = (vehicle) => {
-    // Verificar si la placa o el documento ya existen
     const existingVehicle = vehicles.find(
       (v) =>
         v.licensePlate === vehicle.licensePlate ||
@@ -28,7 +23,6 @@ export const VehicleProvider = ({ children }) => {
   };
 
   const getVehicles = () => {
-    // Puedes implementar lógica para obtener la lista de vehículos
     return vehicles;
   };
 

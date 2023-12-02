@@ -1,0 +1,44 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .col-6{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%
+  }
+  
+  .prueba {
+    display:grid;
+    grid-template-columns:350px 960px;
+    width:100%;
+    
+    
+  }
+  
+  .appwrapper {
+    height: auto;
+    width: auto;
+    margin: 1rem 1rem;
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    box-shadow: 3px 6px 40px#000;
+}
+
+.appwrapperCabeza {
+  
+    height: auto;
+    width: auto;
+    margin: 1rem 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 3px;
+    box-shadow: 3px 6px 40px#000;
+}

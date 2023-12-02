@@ -39,7 +39,7 @@ function ParkingForm() {
   const parkingSpaces = getParkingSpaces();
 
   useEffect(() => {
-    const updatedSpacesList = initializeParkingSpaces(10, 10);
+    const updatedSpacesList = initializeParkingSpaces(5, 5);
     setParkingSpacesList(updatedSpacesList);
   }, [initializeParkingSpaces]);
 
@@ -69,22 +69,19 @@ function ParkingForm() {
           vehicle.idDocument.toLowerCase().includes(buscado.toLowerCase())
       )
       .map((vehicle) => vehicle.licensePlate);
-
-    // Actualiza las opciones de vehículos según la búsqueda
     setSelectedVehicle("");
     setVehicleOptions(filteredVehicleOptions);
   };
 
   const handleParkVehicle = () => {
-    // Realiza las validaciones necesarias antes de registrar el ingreso al parqueadero
     if (!selectedVehicle || !selectedSpace) {
       toast.warning("Selecciona un vehículo y una celda");
       return;
     }
-    // Lógica para registrar el ingreso al parqueadero
+
     const spaceNumber = parseInt(selectedSpace, 10);
 
-    // El vigilante ha ingresado un número de placa
+
     const vehicleInfo = getVehicleByLicensePlate(
       selectedVehicle,
       vehicles,
@@ -96,13 +93,10 @@ function ParkingForm() {
     if (vehicleInfo && validarsiYaExiste.includes(selectedVehicle) != true) {
       parkVehicle(spaceNumber, selectedVehicle, vehicleInfo.type);
       toast.success("Vehiculo registrado en celda.");
-      // Eliminar la celda ocupada de parkingSpacesList
       const updatedSpacesList = parkingSpacesList.filter(
         (space) => space !== spaceNumber
       );
       setParkingSpacesList(updatedSpacesList);
-
-      // Limpiar los campos después de registrar el ingreso
       setSelectedVehicle("");
       setSelectedSpace("");
     } else {
@@ -112,7 +106,7 @@ function ParkingForm() {
 
   return (
     <Grid container justifyContent="center">
-      <Card sx={{ width: 375, height: "auto", boxShadow: "none" }}>
+      <Card sx={{ width: "auto", height: "auto", boxShadow: "none" }}>
         <CardContent
           sx={{
             display: "flex",
@@ -121,11 +115,13 @@ function ParkingForm() {
             justifyContent: "center",
           }}
         >
-          <Typography variant="h5" textAlign="center" component="div">
-            Registrar ingreso al parqueadero
-          </Typography>
-
-          <FormControl fullWidth>
+        <Grid div  display="grid" gridTemplateColumns= "440px 460px" width= "900px">
+          <Grid >
+            <Typography variant="h4"  component="div" >
+              Ingreso al parqueadero
+            </Typography>
+          </Grid>
+          <FormControl marginLeft="2000px" justifyContent="center" >
             <TextField
               variant="standard"
               label="Buscar por placa o número de documento"
@@ -135,25 +131,33 @@ function ParkingForm() {
               onChange={handleBuscar}
             />
           </FormControl>
-          <FormControl fullWidth variant="standard">
-            <InputLabel htmlFor="vehicle">Selecciona un vehículo</InputLabel>
-            <Select
-              labelId="vehicle"
-              id="vehicle"
-              value={selectedVehicle}
-              onChange={handleVehicleChange}
-              label="Selecciona un vehículo"
-            >
-              <MenuItem value="" disabled>
-                Selecciona un vehículo
-              </MenuItem>
-              {vehicleOptions.map((vehicle, index) => (
+        </Grid>
+        <Grid div  
+          justifyContent="center" display="grid" 
+          gridTemplateColumns= "460px 460px" width= "2000px"
+          marginRight="20px" 
+          >
+          <Grid  marginRight="80px" >
+            <FormControl fullWidth variant="standard">
+              <InputLabel htmlFor="vehicle">Selecciona un vehículo</InputLabel>
+              <Select
+                labelId="vehicle"
+                id="vehicle"
+                value={selectedVehicle}
+                onChange={handleVehicleChange}
+               label="Selecciona un vehículo"
+              >
+                <MenuItem value="" disabled>
+                  Selecciona un vehículo
+                </MenuItem>
+                {vehicleOptions.map((vehicle, index) => (
                 <MenuItem key={index} value={vehicle}>
                   {vehicle}
                 </MenuItem>
               ))}
-            </Select>
-          </FormControl>
+              </Select>
+            </FormControl>
+          </Grid>
           <FormControl fullWidth variant="standard">
             <InputLabel htmlFor="space">Selecciona una celda</InputLabel>
             <Select
@@ -168,7 +172,6 @@ function ParkingForm() {
               </MenuItem>
               {parkingSpaces.map((space, index) => {
                 if (!space.occupied) {
-                  // Verificar el tipo de vehículo seleccionado
                   if (typeSelected === "moto" && space.type === "moto") {
                     return (
                       <MenuItem key={index} value={space.number}>
@@ -183,16 +186,18 @@ function ParkingForm() {
                     );
                   }
                 }
-                return null; // No mostrar celdas ocupadas
+                return null;
               })}
             </Select>
           </FormControl>
+        </Grid>
           <Button variant="text" onClick={handleParkVehicle}>
             Registrar Ingreso
           </Button>
         </CardContent>
       </Card>
     </Grid>
+    
   );
 }
 

@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react/prop-types */
-// ParkingContext.js
 import { createContext, useState, useContext, useCallback } from "react";
 
 const ParkingContext = createContext();
@@ -13,7 +9,6 @@ export const ParkingProvider = ({ children }) => {
 
   const initializeParkingSpaces = useCallback(
     (carSpaces, motoSpaces) => {
-      // Inicializa las celdas del parqueadero para carros y motos
       const carSpacesArray = Array(carSpaces)
         .fill(null)
         .map((_, index) => ({
@@ -25,13 +20,12 @@ export const ParkingProvider = ({ children }) => {
         .fill(null)
         .map((_, index) => ({
           type: "moto",
-          number: index + 11,
+          number: index + 6,
           occupied: false,
         }));
 
       const updatedParkingSpaces = [...carSpacesArray, ...motoSpacesArray];
 
-      // Elimina los espacios que están en la lista occupiedSpaces
       const filteredSpaces = updatedParkingSpaces.filter(
         (space) => !occupiedSpaces.includes(space.number)
       );
@@ -45,19 +39,14 @@ export const ParkingProvider = ({ children }) => {
   );
 
   const getParkingSpaces = () => {
-    // Obtiene la información de todas las celdas del parqueadero
     return parkingSpaces;
   };
 
   const getOccupiedSpaces = () => {
-    // Obtiene la información de las celdas ocupadas
     return occupiedSpaces;
   };
 
   const parkVehicle = (spaceNumber, selectedVehicle, type) => {
-    // Estaciona un vehículo en la celda especificada
-    // Actualiza los estados según sea necesario
-
     const updatedSpaces = parkingSpaces.map((space) => {
       if (space.number === spaceNumber) {
         const formattedEntryTime = new Intl.DateTimeFormat("es", {
@@ -73,7 +62,7 @@ export const ParkingProvider = ({ children }) => {
           occupied: true,
           vehicle: {
             licensePlate: selectedVehicle,
-            entryTime: formattedEntryTime, // Agrega la fecha y hora de entrada
+            entryTime: formattedEntryTime, 
           },
         };
       }
@@ -84,19 +73,15 @@ export const ParkingProvider = ({ children }) => {
       (space) => space.number === spaceNumber
     );
 
-    // Actualiza listaCarros solo con el registro que cambió
     if (changedSpace) {
       setListaCarros((prevListaCarros) => [...prevListaCarros, changedSpace]);
     }
 
-    // setListaCarros(updatedSpaces);
     setOccupiedSpaces([...occupiedSpaces, spaceNumber]);
     setParkingSpaces(updatedSpaces);
   };
 
   const leaveParkingSpace = (spaceNumber) => {
-    // Libera la celda del parqueadero ocupada por un vehículo
-    // Actualiza los estados según sea necesario
     const updatedSpaces = parkingSpaces.map((space) => {
       if (space.number === spaceNumber) {
         return { ...space, occupied: false };
@@ -112,12 +97,11 @@ export const ParkingProvider = ({ children }) => {
   };
 
   const getVehicleByLicensePlate = (licensePlate, vehicles, selectedSpace) => {
-    // Obtener la información de un vehículo por su placa
     const space = vehicles.find((space) => space.licensePlate === licensePlate);
     if (space) {
       return { ...space };
     }
-    return null; // Si no se encuentra el vehículo
+    return null; 
   };
 
   const getVehicleAll = () => {
