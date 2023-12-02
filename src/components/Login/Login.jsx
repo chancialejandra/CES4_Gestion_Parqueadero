@@ -16,7 +16,6 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    // Realiza la lógica de autenticación aquí
     login(username, password);
   };
 
